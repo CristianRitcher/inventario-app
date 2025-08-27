@@ -2,7 +2,7 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { router } from 'expo-router'
 
 export default function BotonAcciones({ title, ruta, }: { title: string, ruta: string }) { 
-    const buttonStyle = title === 'Ingreso' || title === 'Egreso' || title === 'Trasladar' || title === 'Estado' || title === 'Eliminar' || title === 'Auditoria'
+    const buttonStyle = title === 'Ingreso' || title === 'Egreso' || title === 'Trasladar' || title === 'Estado' || title === 'Eliminar' || title === 'Auditoria' || title === 'Secciones'
         ? styles[title as keyof Omit<typeof styles, 'text' | 'boton'>]
         : undefined;  
     return (
@@ -54,5 +54,9 @@ const styles = StyleSheet.create({
     Auditoria: {
         backgroundColor: '#fff',
         borderColor: '#777',
+    },
+    Secciones: {
+        backgroundColor: '#fff',
+        borderColor: '#70B0B3',
     },
 })

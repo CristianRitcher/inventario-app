@@ -10,11 +10,11 @@ export default function VerProducto() {
     return (
         <View style={{ height: '100%' }}>
             <Encabezado title={`Producto: ${id}`} backArrow={true} />
-            <ScrollView style={{ paddingTop: 20, paddingBottom: 60 }}>
+            <ScrollView style={styles.content}>
                 <View style={styles.productContainer}>
                     <Image source={require('../../assets/images/icon.png')} style={styles.ProductImage} />
                     <View style={styles.productDefaultContainer}>
-                        <Text >Nombre: Banderolas Extragrandes</Text>
+                        <Text >Nombre: Banderolas Extragrandes con capacidad</Text>
                     </View>
                     <View style={styles.productDefaultContainer}>
                         <Text >Marca: Tecate Premier</Text>
@@ -41,25 +41,25 @@ export default function VerProducto() {
                         <Text >Material: Aluminio</Text>
 
                     </View>
-                    <View style={styles.productOtherInfoContainer}>
-                        <View style={styles.productInfoContainer}>
-                            <Text >MOQ: Minimum Order Quantity</Text>
+                    <View style={styles.messurementsContainer}>
+                        <View style={styles.messureContainer}>
+                            <Text >MOQ: 3</Text>
                         </View>
-                        <View style={styles.productInfoContainer}>
-                            <Text >UM: Unidad</Text>
+                        <View style={styles.messureContainer}>
+                            <Text >UM: Caja</Text>
                         </View>
-                        <View style={styles.productInfoContainer}>
-                            <Text >UE: Unidad de empaque</Text>
+                        <View style={styles.messureContainer}>
+                            <Text >UE: 6</Text>
                         </View>
                     </View>
 
                     <View style={styles.productDefaultContainer}>
-                        <Text >Responsable: Nombre de transportista</Text>
+                        <Text >Responsable: Beberly Constructora</Text>
                     </View>
 
                     <View style={styles.actionsContainer}>
                         <BotonGenerico title="Eliminar" onPress={() => { }} bottonStyle={{}} backgroundColor="#B37070" textColor="white" />
-                        <BotonGenerico title="Editar" onPress={() => { router.push(`/(app)/EditarItem?id=${id}`) }} bottonStyle={{}} backgroundColor="#000" textColor="white" />
+                        <BotonGenerico title="Editar" onPress={() => { router.push(`/(app)/EditarProducto?id=${id}`) }} bottonStyle={{}} backgroundColor="#000" textColor="white" />
                         <BotonGenerico title="Nuevo item" onPress={() => { router.push(`/(app)/AgregarItem?id=${id}`) }} bottonStyle={{}} backgroundColor="#000" textColor="white" />
                     </View>
 
@@ -80,6 +80,10 @@ export default function VerProducto() {
 
 const styles = StyleSheet.create({
 
+    content: {
+        paddingTop: 20,
+        paddingBottom: 60,
+    },
     productContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -135,7 +139,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
     },
-    productOtherInfoContainer: {
+    messurementsContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -143,11 +147,12 @@ const styles = StyleSheet.create({
         width: '100%',
         gap: 10,
     },
-    productInfoContainer: {
+    messureContainer: {
         flex: 1,
         borderWidth: 1,
         padding: 10,
-        height: '100%',
+        textAlign: 'center',
+        alignItems: 'center',
         backgroundColor: 'white',
     },
     actionsContainer: {

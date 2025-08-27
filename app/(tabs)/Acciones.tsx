@@ -19,10 +19,13 @@ export default function AccionesScreen() {
                 </View>
                 <View style={styles.buttonsContainer}>
                     <BotonAcciones title="Trasladar" ruta="/(app)/Accion?accion=trasladar" />
-                    <BotonAcciones title="Estado" ruta="/(app)/Accion?accion=cambiar_estado" />
+                    <BotonAcciones title="Estado" ruta="/(app)/Accion?accion=estado" />
                 </View>
                 <View style={styles.buttonsContainer}>
                     <BotonAcciones title="Eliminar" ruta="/(app)/Accion?accion=eliminar" />
+                    <BotonAcciones title="Secciones" ruta="/(app)/Secciones" />
+                </View>
+                <View style={styles.buttonsContainer}>
                     <BotonAcciones title="Auditoria" ruta="/(app)/Auditoria" />
                 </View>
             </View>
