@@ -1,6 +1,5 @@
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native'
+import { View, Text, ScrollView, StyleSheet, Image, } from 'react-native'
 import { router } from 'expo-router'
-import { Ionicons } from '@expo/vector-icons'
 import { useLocalSearchParams } from 'expo-router'
 import FilaItem from '@/components/ui2/filaItem'
 import Encabezado from '@/components/ui2/encabezado'
