@@ -1,7 +1,7 @@
 import { router } from "expo-router";
 import { View, Text, TouchableOpacity } from "react-native";
 
-export default function FilaItem({ codigo, cantidad, ubicacion, en_bodega, serial, id_item }: { codigo: string, cantidad: number, ubicacion: string, en_bodega: boolean, serial: boolean, id_item: string }) {
+export default function FilaItem({ codigo, cantidad, ubicacion, en_bodega, serial, id_item }: { codigo: string, cantidad: number, ubicacion: string, en_bodega: boolean | null, serial: boolean, id_item: string }) {
     return (
         <TouchableOpacity style={{display: 'flex',
             flexDirection: 'row',
@@ -23,7 +23,7 @@ export default function FilaItem({ codigo, cantidad, ubicacion, en_bodega, seria
                 <Text style={{ fontSize: 12, }}>{ubicacion}</Text> {/* ubicacion del item */}
             </View>
             <View style={{
-                height: '100%', width: 10, borderLeftWidth: 1, backgroundColor: en_bodega ? '#83B370' : serial ? '#B37070' : '#ffffff',
+                height: '100%', width: 10, borderLeftWidth: 1, backgroundColor: serial ? en_bodega ? '#83B370' : '#B37070' : '#ffffff', 
             }}>  {/* #83B370 si esta en bodega, #B37070 si esta fuera de bodega en seriales, si es lote dejar en #ffffff, si es serial no aplica */}
             </View>
 

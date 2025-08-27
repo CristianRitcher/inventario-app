@@ -14,6 +14,9 @@ export default function AppLayout() {
             <Stack.Screen name="AgregarItem" options={{ title: 'AgregarItem', headerShown: false }} />
             <Stack.Screen name="VerItem" options={{ title: 'VerItem', headerShown: false }} />
             <Stack.Screen name="EditarItem" options={{ title: 'EditarItem', headerShown: false }} />
+            {/* Secciones */}
+            <Stack.Screen name="Seccion" options={{ title: 'Seccion', headerShown: false }} />
+            <Stack.Screen name="AgregarSeccion" options={{ title: 'AgregarSeccion', headerShown: false }} />
         </Stack>
     );
 }

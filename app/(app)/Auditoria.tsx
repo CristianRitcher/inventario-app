@@ -20,8 +20,9 @@ export default function AuditoriaScreen() {
                     <View style={styles.sectionContainer}>
                         <Text style={{ fontSize: 16, fontWeight: '600', color: 'black'}}>Seleccionar sección:</Text>
                         <Picker style={styles.picker} >
-                            <Picker.Item label="A15-R3" value="A15-R3" />
-                            <Picker.Item label="C12-R0" value="C12-R0" />
+                            <Picker.Item label="A15-R3" value="2" />
+                            <Picker.Item label="C12-R0" value="5" />
+                            <Picker.Item label="Sin sección" value="1" />
                         </Picker>
                     </View>
 

@@ -23,7 +23,7 @@ export default function AccionesScreen() {
                 </View>
                 <View style={styles.buttonsContainer}>
                     <BotonAcciones title="Eliminar" ruta="/(app)/Accion?accion=eliminar" />
-                    <BotonAcciones title="Secciones" ruta="/(app)/Secciones" />
+                    <BotonAcciones title="Secciones" ruta="/Secciones" />
                 </View>
                 <View style={styles.buttonsContainer}>
                     <BotonAcciones title="Auditoria" ruta="/(app)/Auditoria" />
