@@ -1,75 +1,80 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import BotonGenerico from '@/components/ui2/botonGenerico';
+import Encabezado from '@/components/ui2/encabezado';
+import FilaProducto from '@/components/ui2/filaProducto';
+import { router } from 'expo-router';
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+
+export default function ProductosScreen() {
+	return (
+
+		<View style={styles.container}>
+
+			<Encabezado title="Productos" backArrow={false} />
+
+			<ScrollView style={styles.content}>
+
+				<View style={{ gap: 10 }}>
+
+					<BotonGenerico title="Agregar producto" onPress={() => router.push('/(app)/AgregarProducto')} bottonStyle={{}} backgroundColor="black" textColor="white" />
+
+					<View style={styles.searchBar}>
+						<TextInput placeholder="Buscar (SKU, Serial, Nombre)" style={styles.input} />
+						<TouchableOpacity style={styles.buttonSearch}>
+							<Text style={styles.buttonSearchText}>Buscar</Text>
+						</TouchableOpacity>
+					</View>
+
+					<View style={{ gap: 10 }}>
+						<FilaProducto nombre="Refrigeradores 54R-000" imagen={require('../../assets/images/icon.png')} productId={'1'} />
+						<FilaProducto nombre="Andamios de madera" imagen={require('../../assets/images/icon.png')} productId={'2'} />
+						<FilaProducto nombre="Nevera SScnM" imagen={require('../../assets/images/icon.png')} productId={'3'} />
+					</View>
+
+				</View>
+
+			</ScrollView>
+
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+	container: {
+		width: '100%',
+		height: '100%',
+	},
+	content: {
+		display: 'flex',
+		flexDirection: 'column',
+		paddingHorizontal: 20,
+		marginTop: 20,
+		marginBottom: 60,
+	},
+	searchBar: {
+		width: '100%',
+		height: 50,
+		flexDirection: 'row',
+	},
+	input: {
+		flex: 1,
+		borderWidth: 1,
+		color: 'gray',
+		padding: 10,
+		backgroundColor: 'white',
+	},
+	buttonSearch: {
+		backgroundColor: 'black',
+		color: 'white',
+		padding: 10,
+		width: 100,
+		height: 50,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	buttonSearchText: {
+		color: 'white',
+		textAlign: 'center',
+	},
 });
