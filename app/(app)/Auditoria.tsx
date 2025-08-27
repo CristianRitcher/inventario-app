@@ -11,8 +11,8 @@ import Encabezado from '@/components/ui2/encabezado';
 export default function AuditoriaScreen() {
 
     return (
-        <View>
-            <Encabezado title="Auditoria" backArrow={true} />
+        <View style={styles.container}>
+            <Encabezado title="Auditoría" backArrow={true} />
             <ScrollView>
 
                 <View style={styles.content}>
@@ -31,6 +31,14 @@ export default function AuditoriaScreen() {
                         <FilaEscaneoAuditoria code="8gf8uh4eiuefie" productName="Chicles de zanahoria" serieable={false} />
                         <FilaEscaneoAuditoria code="738273dfdgf891" productName="Cornucopia de madera" serieable={true} />
                         <FilaEscaneoAuditoria code="ewf3dffff43444" productName="N/A" serieable={false} />
+                        <FilaEscaneoAuditoria code="738273dfdgf891" productName="Martillo Caterpillar 1234567890" serieable={true} />
+                        <FilaEscaneoAuditoria code="8gf8uh4eiuefie" productName="Chicles de zanahoria" serieable={false} />
+                        <FilaEscaneoAuditoria code="738273dfdgf891" productName="Cornucopia de madera" serieable={true} />
+                        <FilaEscaneoAuditoria code="ewf3dffff43444" productName="N/A" serieable={false} />
+                        <FilaEscaneoAuditoria code="738273dfdgf891" productName="Martillo Caterpillar 1234567890" serieable={true} />
+                        <FilaEscaneoAuditoria code="8gf8uh4eiuefie" productName="Chicles de zanahoria" serieable={false} />
+                        <FilaEscaneoAuditoria code="738273dfdgf891" productName="Cornucopia de madera" serieable={true} />
+                        <FilaEscaneoAuditoria code="ewf3dffff43444" productName="N/A" serieable={false} />
                     </View>
 
                     <View style={styles.acciones}>
@@ -46,6 +54,7 @@ export default function AuditoriaScreen() {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
+        height: '100%',
     },
     content: {
         display: 'flex',
@@ -77,6 +86,7 @@ const styles = StyleSheet.create({
     picker: {
         width: '40%',
         height: '100%',
+        color: 'black',
     },
     acciones: {
         flexDirection: 'row',

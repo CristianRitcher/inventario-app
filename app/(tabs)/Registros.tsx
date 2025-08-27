@@ -10,7 +10,7 @@ export default function RegistrosScreen() {
         <View style={styles.container}>
 
             <Encabezado title="Registros" backArrow={false} />
-
+            
             <ScrollView style={styles.content}>
 
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.chipContainer} >

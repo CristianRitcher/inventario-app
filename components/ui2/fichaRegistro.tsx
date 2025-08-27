@@ -12,7 +12,7 @@ export default function FichaRegistro( { id_registro }: { id_registro: number } 
                 <View style={styles.itemList}>
                     <View style={styles.item}>
                         <Text style={styles.itemNameInfo}>ProductoNombre</Text>
-                        <Text style={styles.itemCodeInfo}>Item Serial</Text>
+                        <Text style={styles.itemCodeInfo}># Serial / SKU</Text>
                         <Text style={styles.itemQuantityInfo}>20</Text>
                     </View>
                     <View style={styles.item}>

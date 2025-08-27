@@ -1,11 +1,9 @@
 import { router } from 'expo-router';
-import { Button, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { ScrollView, StyleSheet, Text, TextInput, View, } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import Encabezado from '@/components/ui2/encabezado';
 import FilaEscaneoAccion from '@/components/ui2/filaEscaneoAccion';
 import BotonGenerico from '@/components/ui2/botonGenerico';
-import FilaEscaneo from '@/components/ui2/filaEscaneoAccion';
 
 
 

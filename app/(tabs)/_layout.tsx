@@ -3,10 +3,10 @@ import React from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { Ionicons } from '@expo/vector-icons';
 
 
 export default function TabLayout() {
@@ -31,28 +31,35 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Productos',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="clipboard-outline" size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="Acciones"
         options={{
           title: 'Acciones',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="swap-horizontal-outline" size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="Registros"
         options={{
           title: 'Registros',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="file-tray-stacked-outline" size={28} color={color} />,    
+        }}
+      />
+      <Tabs.Screen
+        name="Secciones"
+        options={{
+          title: 'Secciones',
+          tabBarIcon: ({ color }) => <Ionicons name="navigate-outline" size={28} color={color} />,
         }}
       />
       <Tabs.Screen
         name="Perfil"
         options={{
           title: 'Perfil',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={28} color={color} />,
         }}
       />
     </Tabs>

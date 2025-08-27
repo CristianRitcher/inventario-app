@@ -34,6 +34,7 @@ export default function ProductosScreen() {
 
 				</View>
 
+
 			</ScrollView>
 
 		</View>
