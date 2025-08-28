@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         paddingHorizontal: 20,
         gap: 10,
-        paddingBottom: 30,
+        paddingBottom: 10,
     },
     chipContainer: {
         width: '100%',

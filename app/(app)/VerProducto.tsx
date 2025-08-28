@@ -4,6 +4,7 @@ import { useLocalSearchParams } from 'expo-router'
 import FilaItem from '@/components/ui2/filaItem'
 import Encabezado from '@/components/ui2/encabezado'
 import BotonGenerico from '@/components/ui2/botonGenerico'
+import { Picker } from '@react-native-picker/picker'
 
 export default function VerProducto() {
     const { id } = useLocalSearchParams()
@@ -11,42 +12,58 @@ export default function VerProducto() {
         <View style={{ height: '100%' }}>
             <Encabezado title={`Producto: ${id}`} backArrow={true} />
             <ScrollView style={styles.content}>
+               
                 <View style={styles.productContainer}>
+                   
                     <Image source={require('../../assets/images/icon.png')} style={styles.ProductImage} />
+                  
                     <View style={styles.productDefaultContainer}>
                         <Text >Nombre: Banderolas Extragrandes con capacidad</Text>
                     </View>
+                 
                     <View style={styles.productDefaultContainer}>
                         <Text >Marca: Tecate Premier</Text>
                     </View>
+                   
                     <View style={styles.productDefaultContainer}>
                         <Text >SKU: 378278192</Text>
                     </View>
+                   
                     <View style={styles.productCountContainer}>
+                       
                         <View style={styles.productSubtotalContainer}>
                             <Text >Dentro de bodega:</Text>
                             <Text >10</Text>
                         </View>
+                        
                         <View style={styles.productSubtotalContainer}>
                             <Text >Fuera de bodega:</Text>
                             <Text >12</Text>
                         </View>
+                        
                         <View style={styles.separator} />
+                       
                         <View style={styles.productTotalContainer}>
                             <Text >Total:</Text>
                             <Text >22</Text>
                         </View>
+                    
                     </View>
+                    
                     <View style={styles.productDefaultContainer}>
                         <Text >Material: Aluminio</Text>
                     </View>
+                    
                     <View style={styles.messurementsContainer}>
+                        
                         <View style={styles.messureContainer}>
                             <Text>MOQ: 3</Text>
                         </View>
+                        
                         <View style={styles.messureContainer}>
                             <Text>UM: Caja</Text>
                         </View>
+                        
                         <View style={styles.messureContainer}>
                             <Text>UE: 6</Text>
                         </View>
@@ -167,5 +184,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         marginBottom: 60,
     },
+    
 
 })

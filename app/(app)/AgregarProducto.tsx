@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, TouchableOpacity, TextInput, ScrollView } from
 import BotonGenerico from "@/components/ui2/botonGenerico"
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from "react";
+import { router } from "expo-router";
 
 export default function AgregarProducto() {
     const [image, setImage] = useState<string | null>(null);
@@ -75,8 +76,10 @@ export default function AgregarProducto() {
                     <View style={styles.productContainer}>
                         <TextInput placeholder="Responsable" value={responsable} onChangeText={setResponsable} style={styles.input} placeholderTextColor="gray" />
                     </View>
-
-                    <BotonGenerico title="Crear producto" onPress={() => { }} bottonStyle={{ width: '100%', height: 54 }} backgroundColor="black" textColor="white" />
+                    <View style={styles.buttonContainer}>
+                        <BotonGenerico title="Cancelar" onPress={() => { router.back() }} bottonStyle={{ width: '100%', height: 54 }} backgroundColor="white" textColor="black" />
+                        <BotonGenerico title="Crear producto" onPress={() => { }} bottonStyle={{ width: '100%', height: 54 }} backgroundColor="black" textColor="white" />
+                    </View>
                 </View >
 
             </ScrollView>
@@ -147,5 +150,10 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: 'white',
     },
-
+    buttonContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+        gap: 10,
+    },
 })
