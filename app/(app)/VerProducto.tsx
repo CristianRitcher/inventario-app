@@ -39,17 +39,16 @@ export default function VerProducto() {
                     </View>
                     <View style={styles.productDefaultContainer}>
                         <Text >Material: Aluminio</Text>
-
                     </View>
                     <View style={styles.messurementsContainer}>
                         <View style={styles.messureContainer}>
-                            <Text >MOQ: 3</Text>
+                            <Text>MOQ: 3</Text>
                         </View>
                         <View style={styles.messureContainer}>
-                            <Text >UM: Caja</Text>
+                            <Text>UM: Caja</Text>
                         </View>
                         <View style={styles.messureContainer}>
-                            <Text >UE: 6</Text>
+                            <Text>UE: 6</Text>
                         </View>
                     </View>
 

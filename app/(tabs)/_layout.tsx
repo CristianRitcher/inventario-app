@@ -52,7 +52,7 @@ export default function TabLayout() {
         name="Secciones"
         options={{
           title: 'Secciones',
-          tabBarIcon: ({ color }) => <Ionicons name="navigate-outline" size={28} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="grid-outline" size={28} color={color} />,  
         }}
       />
       <Tabs.Screen

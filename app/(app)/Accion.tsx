@@ -25,8 +25,8 @@ export default function AccionScreen() {
                     <TextInput style={styles.input} placeholder="Agregar código" placeholderTextColor="gray" />
 
                     <View style={{ gap: 10 }}>
-                        <FilaEscaneoAccion />
-                        <FilaEscaneoAccion />
+                        <FilaEscaneoAccion serieable={true} />
+                        <FilaEscaneoAccion serieable={false} />
                     </View>
 
                     <View style={styles.acciones}>

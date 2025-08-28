@@ -18,12 +18,19 @@ export default function PerfilScreen() {
 
                     <View style={styles.separator} />
                     <Text style={styles.text}>Nombre</Text>
+
                     <View style={styles.separator} />
                     <Text style={styles.text}>Correo</Text>
+
                     <View style={styles.separator} />
                     <Text style={styles.text}>Cargo</Text>
+
+                    <View style={styles.separator} />
+                    <Text style={styles.text}>Bodega</Text>
+
                     <View style={styles.separator} />
                     <Text style={styles.text}>Fecha de registro</Text>
+                    
                     <View style={styles.separator} />
 
                     <BotonGenerico title="Cerrar sesión" onPress={logout} bottonStyle={styles.marginTop} backgroundColor="#000" textColor="#fff" /> 
@@ -55,16 +62,13 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     text: {
-        fontSize: 16,
-        fontWeight: '400',
         textAlign: 'center',
-        marginTop: 10,
     },
     separator: {
         width: '100%',
         height: 1,
         backgroundColor: '#000',
-        marginTop: 10,
+        marginVertical: 10,
     },
     marginTop: {
         marginTop: 20,

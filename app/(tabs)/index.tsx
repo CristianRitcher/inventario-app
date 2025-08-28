@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'column',
 		paddingHorizontal: 20,
-		marginTop: 20,
-		marginBottom: 60,
+		paddingTop: 20,
+		paddingBottom: 60,
 	},
 	searchBar: {
 		width: '100%',

@@ -1,6 +1,8 @@
-import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 
-export default function FilaEscaneo() {
+export default function FilaEscaneo({serieable}: {serieable: boolean}) {
+    const [cantidad, setCantidad] = useState(1);
     return (
         <View style={styles.fila}>
             <View style={styles.codeContainer}>
@@ -9,7 +11,8 @@ export default function FilaEscaneo() {
             <View style={styles.nameContainer}>
                 <Text style={styles.productName}>Martillo Caterpillar 1234567890</Text>
             </View>
-            <TextInput style={styles.inputCantidad} placeholder="0" />
+            {serieable ? <TextInput style={[styles.inputCantidad, { color: 'lightgray' }]} keyboardType="numeric" value={cantidad.toString()} onChangeText={(text) => setCantidad(parseInt(text))} editable={false} />
+                : <TextInput style={styles.inputCantidad} keyboardType="numeric" value={cantidad.toString()} onChangeText={(text) => setCantidad(parseInt(text))} editable={true} />}
             <View style={styles.seleccionarSeccion}>
                 <Text style={styles.seleccionarSeccionText}>A00-R0ddd</Text>
             </View>

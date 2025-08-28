@@ -1,6 +1,6 @@
 import BotonAcciones from '@/components/ui2/botonAcciones';
 import Encabezado from '@/components/ui2/encabezado';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 
 
