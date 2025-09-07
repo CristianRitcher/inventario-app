@@ -1,37 +1,31 @@
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import BotonAcciones from '@/components/ui2/botonAcciones';
 import Encabezado from '@/components/ui2/encabezado';
-import { StyleSheet, View } from 'react-native';
-
-
+import { AuthGuard } from '../../src/components/AuthGuard';
 
 export default function AccionesScreen() {
-
     return (
+        <AuthGuard>
+            <View style={styles.container}>
+                <Encabezado title="Acciones" backArrow={false} />
 
-        <View style={styles.container}>
-
-            <Encabezado title="Acciones" backArrow={false} />
-
-            <View style={styles.content}>
-                <View style={styles.buttonsContainer}>
-                    <BotonAcciones title="Ingreso" ruta="/(app)/Accion?accion=ingreso" />
-                    <BotonAcciones title="Egreso" ruta="/(app)/Accion?accion=egreso" />
-                </View>
-                <View style={styles.buttonsContainer}>
-                    <BotonAcciones title="Trasladar" ruta="/(app)/Accion?accion=trasladar" />
-                    <BotonAcciones title="Estado" ruta="/(app)/Accion?accion=estado" />
-                </View>
-                <View style={styles.buttonsContainer}>
-                    <BotonAcciones title="Eliminar" ruta="/(app)/Accion?accion=eliminar" />
-                    <BotonAcciones title="Secciones" ruta="/Secciones" />
-                </View>
-                <View style={styles.buttonsContainer}>
-                    <BotonAcciones title="Auditoria" ruta="/(app)/Auditoria" />
+                <View style={styles.content}>
+                    <View style={styles.buttonsContainer}>
+                        <BotonAcciones title="Ingreso" ruta="/(app)/Accion?tipo=ingreso" />
+                        <BotonAcciones title="Egreso" ruta="/(app)/Accion?tipo=egreso" />
+                    </View>
+                    <View style={styles.buttonsContainer}>
+                        <BotonAcciones title="Traslado" ruta="/(app)/Accion?tipo=traslado" />
+                        <BotonAcciones title="Eliminación" ruta="/(app)/Accion?tipo=eliminacion" />
+                    </View>
+                    <View style={styles.buttonsContainer}>
+                        <BotonAcciones title="Auditoría" ruta="/(app)/Auditoria" />
+                        <BotonAcciones title="Secciones" ruta="/(tabs)/Secciones" />
+                    </View>
                 </View>
             </View>
-
-        </View>
-
+        </AuthGuard>
     );
 }
 
