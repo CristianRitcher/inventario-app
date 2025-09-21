@@ -128,6 +128,18 @@ class ApiService {
     return response.data;
   }
 
+  async searchCombined(
+    page = 1,
+    limit = 30,
+    search?: string
+  ): Promise<{ productos: any[]; total: number }> {
+    const params: any = { page, limit };
+    if (search) params.search = search;
+    
+    const response = await this.api.get('/productos/search/combined', { params });
+    return response.data;
+  }
+
   async getProducto(id: number): Promise<Producto> {
     const response = await this.api.get(`/productos/${id}`);
     return response.data;

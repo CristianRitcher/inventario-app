@@ -22,7 +22,15 @@ export default function ProductosScreen() {
 	const loadProductos = async (searchQuery?: string, pageNum = 1) => {
 		try {
 			setIsLoading(pageNum === 1);
-			const response = await apiService.getProductos(pageNum, 30, searchQuery);
+			let response;
+			
+			if (searchQuery) {
+				// Usar búsqueda combinada cuando hay texto de búsqueda
+				response = await apiService.searchCombined(pageNum, 30, searchQuery);
+			} else {
+				// Usar búsqueda normal cuando no hay texto
+				response = await apiService.getProductos(pageNum, 30, searchQuery);
+			}
 			
 			if (pageNum === 1) {
 				setProductos(response.productos);
