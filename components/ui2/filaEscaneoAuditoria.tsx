@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 
-export default function FilaEscaneo({code, productName, serieable}: {code: string, productName: string, serieable: boolean}) {
+interface Props {
+    code: string;
+    productName: string;
+    serieable: boolean;
+    onRemove?: () => void;
+}
+
+export default function FilaEscaneo({code, productName, serieable, onRemove}: Props) {
     const [cantidad, setCantidad] = useState(1);
     return (
         <View style={styles.fila}>
@@ -13,7 +20,7 @@ export default function FilaEscaneo({code, productName, serieable}: {code: strin
             </View>
             {serieable ? <TextInput style={[styles.inputCantidad, {color: 'lightgray'}]} keyboardType="numeric" value={cantidad.toString()} onChangeText={(text) => setCantidad(parseInt(text))} editable={false} />
                         : <TextInput style={styles.inputCantidad} keyboardType="numeric" value={cantidad.toString()} onChangeText={(text) => setCantidad(parseInt(text))} editable={true} />}
-            <TouchableOpacity style={styles.deleteButton}>
+            <TouchableOpacity style={styles.deleteButton} onPress={onRemove}>
                 <Text style={styles.deleteText}>X</Text>
             </TouchableOpacity>
         </View>

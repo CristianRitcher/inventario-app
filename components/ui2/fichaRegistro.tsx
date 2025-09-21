@@ -1,32 +1,99 @@
 import { View, Text, StyleSheet } from 'react-native'
+import { Movimiento, TipoMovimientoEnum } from '../../src/types'
 
-export default function FichaRegistro( { id_registro }: { id_registro: number } )  {
-    return (
-            <View style={styles.card}>
-                <Text style={styles.cardTitle}>Ingeso {id_registro}</Text>
-                <View style={styles.cardSeparator}></View>
-                <Text>Fecha: 2025-01-01 16:00:00</Text>
-                <Text>Responsable: Juan Perez</Text>
-                <Text>Otra información dependiente del registro</Text>
-                <View style={styles.cardSeparator}></View>
-                <View style={styles.itemList}>
+interface Props {
+    movimiento: Movimiento;
+}
+
+export default function FichaRegistro({ movimiento }: Props) {
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        return date.toLocaleString('es-ES', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    };
+
+    const getTipoDisplayName = (tipo: TipoMovimientoEnum) => {
+        switch (tipo) {
+            case TipoMovimientoEnum.INGRESO:
+                return 'Ingreso';
+            case TipoMovimientoEnum.EGRESO:
+                return 'Egreso';
+            case TipoMovimientoEnum.TRASLADO:
+                return 'Traslado';
+            case TipoMovimientoEnum.ELIMINACION:
+                return 'Eliminación';
+            case TipoMovimientoEnum.AUDITORIA:
+                return 'Auditoría';
+            default:
+                return tipo;
+        }
+    };
+
+    const renderItemDetails = () => {
+        if (movimiento.tipo === TipoMovimientoEnum.AUDITORIA) {
+            // Para auditorías, mostrar información de la auditoría
+            if (movimiento.auditoriaDetalles && movimiento.auditoriaDetalles.length > 0) {
+                const auditoria = movimiento.auditoriaDetalles[0];
+                return (
                     <View style={styles.item}>
-                        <Text style={styles.itemNameInfo}>ProductoNombre</Text>
-                        <Text style={styles.itemCodeInfo}># Serial / SKU</Text>
-                        <Text style={styles.itemQuantityInfo}>20</Text>
+                        <Text style={styles.itemNameInfo}>Códigos escaneados: {auditoria.cantidad}</Text>
+                        <Text style={styles.itemCodeInfo}>Auditoría</Text>
+                        <Text style={styles.itemQuantityInfo}>{auditoria.cantidad}</Text>
                     </View>
-                    <View style={styles.item}>
-                        <Text style={styles.itemNameInfo}>ProductoNombre</Text>
-                        <Text style={styles.itemCodeInfo}>Item Serial</Text>
-                        <Text style={styles.itemQuantityInfo}>20</Text>
-                    </View>
-                    <View style={styles.item}>
-                        <Text style={styles.itemNameInfo}>ProductoNombre</Text>
-                        <Text style={styles.itemCodeInfo}>Item Serial</Text>
-                        <Text style={styles.itemQuantityInfo}>20</Text>
-                    </View>
+                );
+            }
+        } else {
+            // Para otros tipos, mostrar detalles de items
+            return movimiento.detalles?.map((detalle, index) => (
+                <View key={index} style={styles.item}>
+                    <Text style={styles.itemNameInfo}>
+                        {detalle.item?.producto?.nombre || 'Producto no disponible'}
+                    </Text>
+                    <Text style={styles.itemCodeInfo}>
+                        {detalle.item?.serial || 'N/A'}
+                    </Text>
+                    <Text style={styles.itemQuantityInfo}>
+                        {detalle.cantidad}
+                    </Text>
                 </View>
+            ));
+        }
+    };
+
+    return (
+        <View style={styles.card}>
+            <Text style={styles.cardTitle}>
+                {getTipoDisplayName(movimiento.tipo)} #{movimiento.id}
+            </Text>
+            <View style={styles.cardSeparator}></View>
+            <Text>Fecha: {formatDate(movimiento.fecha_hora)}</Text>
+            <Text>Responsable: {movimiento.usuario?.nombre || 'N/A'}</Text>
+            {movimiento.tercero_nombre && (
+                <Text>Tercero: {movimiento.tercero_nombre}</Text>
+            )}
+            {movimiento.motivo && (
+                <Text>Motivo: {movimiento.motivo}</Text>
+            )}
+            {movimiento.seccion && (
+                <Text>Sección: {movimiento.seccion.nombre}</Text>
+            )}
+            {movimiento.seccionDestino && (
+                <Text>Sección destino: {movimiento.seccionDestino.nombre}</Text>
+            )}
+            <View style={styles.cardSeparator}></View>
+            <View style={styles.itemList}>
+                {renderItemDetails()}
+                {(!movimiento.detalles || movimiento.detalles.length === 0) && 
+                 movimiento.tipo !== TipoMovimientoEnum.AUDITORIA && (
+                    <Text style={styles.noItemsText}>Sin items registrados</Text>
+                )}
             </View>
+        </View>
     )
 }
 
@@ -75,5 +142,11 @@ const styles = StyleSheet.create({
         color: 'gray',
         width: '10%',
         textAlign: 'right',
+    },
+    noItemsText: {
+        color: '#888',
+        fontStyle: 'italic',
+        textAlign: 'center',
+        marginVertical: 10,
     },
 })
