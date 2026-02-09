@@ -2,12 +2,14 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { router } from 'expo-router'
 
 export default function BotonAcciones({ title, ruta, }: { title: string, ruta: string }) { 
-    const buttonStyle = title === 'Ingreso' || title === 'Egreso' || title === 'Trasladar' || title === 'Estado' || title === 'Eliminar' || title === 'Auditoria' || title === 'Secciones'
+    const buttonStyle = title === 'Ingresar' || title === 'Egresar' || title === 'Trasladar' || title === 'Estado' || title === 'Eliminar' || title === 'Auditar' || title === 'Secciones'
         ? styles[title as keyof Omit<typeof styles, 'text' | 'boton'>]
         : undefined;  
+
+    const isDisabled = title === 'Estado';
     return (
-        <TouchableOpacity style={[styles.boton, buttonStyle]} onPress={() => router.push(ruta as any)}>
-            <Text style={styles.text}>{title}</Text>
+        <TouchableOpacity style={[styles.boton, buttonStyle]} disabled={isDisabled} onPress={() => router.push(ruta as any)}>
+            <Text style={styles.text}>{title}</Text> 
         </TouchableOpacity> 
     )
 }
@@ -25,38 +27,33 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderRightWidth: 1,
         borderLeftWidth: 10,
+        backgroundColor: '#fff',
     },
     text: {
         color: 'black',
         fontSize: 18,
         fontWeight: '400',
     },
-    Ingreso: {
-        backgroundColor: '#fff',
-        borderColor: '#708FB3',
+    Ingresar: {
+        borderColor: '#7dc272',
     },
-    Egreso: {
-        backgroundColor: '#fff',
-        borderColor: '#B39970',
+    Egresar: {
+        borderColor: '#a672c2',
     },
     Trasladar: {
-        backgroundColor: '#fff',
-        borderColor: '#83B370',
+        borderColor: '#f5db76',
     },
     Estado: {
-        backgroundColor: '#fff',
-        borderColor: '#AC70B3',
+        borderColor: '#72acb3',
+        opacity: 0.3,
     },
     Eliminar: {
-        backgroundColor: '#fff',
-        borderColor: '#B37070',
+        borderColor: '#c27572',
     },
-    Auditoria: {
-        backgroundColor: '#fff',
+    Auditar: {
         borderColor: '#777',
     },
     Secciones: {
-        backgroundColor: '#fff',
-        borderColor: '#70B0B3',
+        borderColor: '#7296c2',
     },
 })

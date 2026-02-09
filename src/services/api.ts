@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
 import {
   Usuario,
   Bodega,
@@ -12,8 +13,22 @@ import {
   PaginatedResponse,
 } from '../types';
 
-// Configuración base de la API
-const API_BASE_URL = 'http://localhost:3000/api'; // Cambiar según tu configuración
+// Tu IP local - cámbiala si cambia tu red
+const LOCAL_IP = '192.168.0.212';
+
+// Configuración de URL según plataforma
+const getApiBaseUrl = () => {
+  if (Platform.OS === 'web') {
+    // Web puede usar localhost directamente
+    return 'http://localhost:3000/api';
+  } else {
+    // Android/iOS físico con Expo Go necesita la IP local
+    return `http://${LOCAL_IP}:3000/api`;
+  }
+};
+
+const API_BASE_URL = getApiBaseUrl();
+console.log('🔗 API Base URL:', API_BASE_URL, '| Platform:', Platform.OS);
 
 class ApiService {
   private api: AxiosInstance;
